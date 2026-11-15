@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgresql://localhost:6543/nfc_ci?pgbouncer=true&connection_limit=1
+      DIRECT_URL: postgresql://localhost:5432/nfc_ci
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm --filter api prisma:generate
+      - run: pnpm typecheck
+      - run: pnpm run typecheck:cloudflare:api
+      - run: pnpm test
+      - run: pnpm build

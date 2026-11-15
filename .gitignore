@@ -1,0 +1,16 @@
+node_modules
+.next
+.open-next
+.wrangler
+.dev.vars
+apps/api/worker-configuration.d.ts
+.turbo
+dist
+coverage
+out
+/test-results/
+.env
+.env*.local
+.vercel
+*.tsbuildinfo
+next-env.d.ts

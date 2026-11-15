@@ -1,0 +1,169 @@
+.root {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow-x: clip;
+  background: #f8fafc;
+  color: #0f172a;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.root .dotPattern {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.root .dotPattern::before {
+  position: absolute;
+  inset: -20%;
+  background-image: radial-gradient(var(--theme-dot) 1px, transparent 1.5px);
+  background-size: 24px 24px;
+  content: '';
+  opacity: 0.55;
+  transform: translate3d(0, 0, 0);
+  animation: dot-drift 70s linear infinite;
+  will-change: transform;
+}
+
+.root .paused::before {
+  animation-play-state: paused;
+}
+
+.root .reveal {
+  transition:
+    opacity 420ms ease,
+    transform 420ms ease;
+  transition-delay: calc(var(--reveal-order, 0) * 70ms);
+}
+
+.root[data-motion-ready='true'] .reveal:not(.visible) {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.root .avatarRing {
+  isolation: isolate;
+}
+
+.root .avatarRing::before {
+  position: absolute;
+  z-index: -1;
+  inset: -5px;
+  border: 2px solid var(--theme-ring);
+  border-radius: 9999px;
+  content: '';
+  opacity: 0.25;
+  animation: ring-glow 2.8s ease-in-out infinite;
+}
+
+.root .themeShine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.root .themeShine::after {
+  position: absolute;
+  inset: 0 auto 0 -45%;
+  width: 35%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 35%), transparent);
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+  transform: skewX(-20deg);
+  transition:
+    transform 550ms ease,
+    opacity 200ms ease;
+}
+
+.root .themeShine:hover::after {
+  opacity: 1;
+  transform: translateX(430%) skewX(-20deg);
+}
+
+.root .productCard {
+  transition:
+    transform 220ms ease,
+    opacity 360ms ease;
+  transition-delay: calc(var(--product-order, 0) * 70ms);
+}
+
+.root .productCard:hover {
+  transform: translateY(-4px);
+}
+
+.root .lightboxOverlay {
+  animation: lightbox-in 200ms ease-out both;
+}
+
+.root .lightboxOverlay figure {
+  animation: lightbox-content-in 240ms ease-out both;
+}
+
+@keyframes dot-drift {
+  to {
+    transform: translate3d(24px, 24px, 0);
+  }
+}
+
+@keyframes ring-glow {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.035);
+  }
+}
+
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lightbox-content-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root .dotPattern::before {
+    animation: none !important;
+    will-change: auto;
+  }
+
+  .root .reveal,
+  .root .avatarRing::before,
+  .root .themeShine::after,
+  .root .productCard,
+  .root .lightboxOverlay,
+  .root .lightboxOverlay figure {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .root[data-motion-ready='true'] .reveal:not(.visible) {
+    opacity: 1;
+  }
+}

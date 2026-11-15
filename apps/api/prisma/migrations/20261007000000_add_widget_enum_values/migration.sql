@@ -1,0 +1,11 @@
+SET search_path TO "public";
+
+ALTER TYPE "WidgetType" ADD VALUE IF NOT EXISTS 'cover';
+ALTER TYPE "WidgetType" ADD VALUE IF NOT EXISTS 'avatar';
+ALTER TYPE "WidgetType" ADD VALUE IF NOT EXISTS 'about';
+ALTER TYPE "WidgetType" ADD VALUE IF NOT EXISTS 'contact';
+ALTER TYPE "WidgetType" ADD VALUE IF NOT EXISTS 'social';
+ALTER TYPE "WidgetType" ADD VALUE IF NOT EXISTS 'services';
+ALTER TYPE "WidgetType" ADD VALUE IF NOT EXISTS 'links';
+ALTER TYPE "WidgetType" ADD VALUE IF NOT EXISTS 'vcard';
+ALTER TYPE "WidgetType" ADD VALUE IF NOT EXISTS 'qr';

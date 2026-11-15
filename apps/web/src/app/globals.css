@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.app-theme {
+  --app-primary: #4f46e5;
+  --app-primary-hover: #4338ca;
+  --app-primary-light: #eef2ff;
+  --app-primary-border: #c7d2fe;
+  --app-background: #f8fafc;
+  --app-sidebar: #ffffff;
+  --app-card: #ffffff;
+  --app-hover: #f1f5f9;
+  --app-selected: #eef2ff;
+  --app-text: #0f172a;
+  --app-text-secondary: #475569;
+  --app-text-muted: #94a3b8;
+  --app-border: #e2e8f0;
+  --app-focus: #6366f1;
+  --app-success: #16a34a;
+  --app-warning: #d97706;
+  --app-error: #dc2626;
+  --app-info: #0284c7;
+  min-height: 100vh;
+  background-color: var(--app-background);
+  color: var(--app-text);
+  font-family: var(--font-app-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+.app-theme .app-card {
+  border: 1px solid var(--app-border);
+  border-radius: 1rem;
+  background-color: var(--app-card);
+  box-shadow: 0 8px 26px rgb(15 23 42 / 4%);
+}
+
+.app-theme .app-card.app-card-dashed {
+  border-style: dashed;
+}
+
+.app-theme .app-card.app-card-selected {
+  border-color: var(--app-primary-border);
+  box-shadow: 0 0 0 3px rgb(79 70 229 / 10%);
+}
+
+.app-theme .app-card.app-card-featured {
+  border: 2px solid var(--app-primary);
+}
+
+.app-theme .app-card.app-card-interactive {
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.app-theme .app-card.app-card-interactive:hover {
+  border-color: var(--app-primary-border);
+  transform: translateY(-1px);
+}
+
+.app-theme .app-control {
+  min-height: 2.75rem;
+  width: 100%;
+  border: 1px solid var(--app-border);
+  border-radius: 0.625rem;
+  background-color: #fff;
+  padding: 0.625rem 0.75rem;
+  color: var(--app-text);
+  font-size: 0.875rem;
+}
+
+.app-theme .app-control[type='color'] {
+  width: 3.5rem;
+  padding: 0.25rem;
+}
+
+.app-theme .app-control::placeholder {
+  color: var(--app-text-muted);
+}
+
+.app-theme input[type='checkbox'],
+.app-theme input[type='radio'] {
+  accent-color: var(--app-primary);
+}
+
+.app-theme .app-control:focus {
+  border-color: var(--app-focus);
+  outline: 3px solid rgb(99 102 241 / 18%);
+  outline-offset: 1px;
+}
+
+.app-theme .app-button-primary {
+  min-height: 2.75rem;
+  border-radius: 0.625rem;
+  background-color: var(--app-primary);
+  padding: 0.625rem 1rem;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.app-theme .app-button-primary:hover:not(:disabled) {
+  background-color: var(--app-primary-hover);
+}
+
+.app-theme .app-button-primary:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.app-theme .app-button-primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.app-theme .app-button-secondary {
+  min-height: 2.75rem;
+  border: 1px solid var(--app-border);
+  border-radius: 0.625rem;
+  background-color: #fff;
+  padding: 0.625rem 1rem;
+  color: var(--app-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.app-theme .app-button-secondary:hover:not(:disabled) {
+  border-color: var(--app-primary-border);
+  background-color: var(--app-hover);
+}
+
+.app-theme .app-button-secondary.p-0 {
+  padding: 0;
+}
+
+.app-theme .app-nav-link {
+  display: flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  color: var(--app-text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.app-theme .app-nav-link:hover,
+.app-theme .app-nav-link[aria-current='page'] {
+  background-color: var(--app-selected);
+  color: var(--app-primary-hover);
+}
+
+.app-theme .app-nav-link:focus-visible,
+.app-theme .app-button-primary:focus-visible,
+.app-theme .app-button-secondary:focus-visible,
+.app-theme .app-control:focus-visible {
+  outline: 3px solid var(--app-focus);
+  outline-offset: 2px;
+}
+
+.app-theme .profile-preview-frame {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+:focus-visible {
+  outline: 3px solid #4f46e5;
+  outline-offset: 3px;
+}
+
+[data-active='false'] *,
+[data-active='false'] *::before,
+[data-active='false'] *::after {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-theme .app-button-primary,
+  .app-theme .app-button-secondary,
+  .app-theme .app-nav-link {
+    transition: none;
+  }
+}

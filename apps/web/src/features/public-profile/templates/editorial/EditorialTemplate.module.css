@@ -1,0 +1,135 @@
+.root {
+  min-height: 100vh;
+  background: #faf9f6;
+  color: #1f2937;
+  font-family: Georgia, 'Times New Roman', serif;
+  overflow-wrap: anywhere;
+}
+
+.content {
+  margin-inline: auto;
+  max-width: 860px;
+  padding: max(2rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right))
+    max(5rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+}
+
+.header {
+  border-top: 2px solid var(--theme-primary);
+  border-bottom: 1px solid #d6d3d1;
+  padding: 2rem 0;
+}
+
+.name {
+  max-width: 18ch;
+  font-size: clamp(2.5rem, 9vw, 5rem);
+  font-weight: 500;
+  line-height: 0.98;
+  overflow-wrap: anywhere;
+}
+
+.section {
+  border-bottom: 1px solid #d6d3d1;
+  padding: 2rem 0;
+}
+
+.section h2 {
+  color: var(--theme-primary);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contactQrGrid {
+  min-width: 0;
+}
+
+.contactLink {
+  display: flex;
+  min-width: 0;
+  min-height: 2.75rem;
+  align-items: center;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.contactLink:hover {
+  color: var(--theme-primary);
+}
+
+.contactLink:focus-visible,
+.galleryItem:focus-visible {
+  outline: 2px solid var(--theme-primary);
+  outline-offset: 3px;
+}
+
+.galleryItem {
+  min-width: 0;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0.75rem;
+  padding: 0;
+  background: #e7e5e4;
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.action {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  border: 1px solid var(--theme-primary);
+  border-radius: 9999px;
+  padding: 0.65rem 1rem;
+  color: var(--theme-primary);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  text-decoration: none;
+}
+
+.action:hover,
+.action:focus-visible {
+  background: var(--theme-soft);
+  outline: 2px solid var(--theme-primary);
+  outline-offset: 2px;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .content {
+    padding-right: max(2rem, env(safe-area-inset-right));
+    padding-left: max(2rem, env(safe-area-inset-left));
+  }
+}
+
+@media (min-width: 768px) {
+  .contactQrGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root *,
+  .root *::before,
+  .root *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
