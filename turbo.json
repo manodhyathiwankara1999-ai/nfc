@@ -20,9 +20,11 @@
       "dependsOn": ["^build"]
     },
     "@nfc/shared#build": {
-      "outputs": []
+      "outputs": ["dist/**"]
     },
     "@nfc/web#build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**"],
       "env": ["API_INTERNAL_URL", "NEXT_PUBLIC_*", "NEXT_DIST_DIR"]
     }
   }
